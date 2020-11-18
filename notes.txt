@@ -1,0 +1,23 @@
+Turn off x running at boot:
+# systemctl set-default multi-user.target
+See: https://unix.stackexchange.com/questions/264393/how-to-disable-x-server-autostart-in-debian-jessie
+
+====================================
+
+# apt install openbox
+# apt install xinit
+# apt install xterm
+
+(# apt install menu ?)
+
+====================================
+
+# apt install ntp
+
+====================================
+
+To run Openbox from the commandline, setup the .xinitrc file in your home directory and insert the following line:
+
+    exec openbox-session
+
+Then execute startx.
