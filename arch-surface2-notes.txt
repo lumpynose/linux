@@ -6,10 +6,11 @@ nvme0n1p with mmcblk0p
 and to start gdisk replace
 nvme0n1 with mmcblk0.
 ==============================================
-The pound sign is root's prompt; type or copy+paste whatever's after it.
-Lines flush left after a root prompt line you copy and paste or type.
+// The pound sign is root's prompt; type or copy+paste whatever's after it.
+// Lines flush left after a root prompt line you copy and paste or type.
+// Stuff after // are comments
 
-Verify network is working
+// Verify network is working
   # ip addr
 
   # passwd root
@@ -17,18 +18,18 @@ secret
 
   # systemctl start sshd.service
 
-Now connect to system with putty.
+// Now connect to system with putty.
 
   # timedatectl set-ntp true
 
-Get list of disks.
+// Get list of disks.
   # lsblk
 
   # gdisk /dev/nvme0n1
-  o (wipes partition table)
-  n return, +260M, ef00 (efi partition)
-  n return, return, return (8300, linux partition)
-  w
+o // wipes partition table
+n return, +260M, ef00 // efi partition
+n return, return, return // 8300, linux partition
+w
 
   # mkfs.fat -F32 /dev/nvme0n1p1
   # mkfs.ext4 /dev/nvme0n1p2
@@ -46,7 +47,7 @@ Get list of disks.
 
   # genfstab -U /mnt >> /mnt/etc/fstab
 
-Add/fix swap file to fstab if not there (genfstab added it):
+// Add/fix swap file to fstab if not there (genfstab added it):
   # emacs /mnt/etc/fstab
 /swapfile none swap defaults 0 0
 
@@ -55,32 +56,32 @@ Add/fix swap file to fstab if not there (genfstab added it):
   # pacman -S emacs-nox vim emacs hwinfo e2fsprogs dosfstools man-db man-pages
   # pacman -S texinfo upower acpi grub efibootmgr intel-ucode
   # pacman -S wpa_supplicant dhcpcd systemd-resolvconf ntp openssh iproute2
-(Choose systemd-resolvconf if asked?)
+// Choose systemd-resolvconf if asked?
 
   # ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
   # hwclock --systohc
 
-Uncomment two lines for en_US
+// Uncomment two lines for en_US
   # emacs /etc/locale.gen
 
-Generate local files
+// Generate local files
   # locale-gen
 
-Edit /etc/locale.conf and add LANG=en_US.UTF-8
+// Edit /etc/locale.conf and add LANG=en_US.UTF-8
   # emacs /etc/locale.conf
 LANG=en_US.UTF-8
 
-Edit /etc/vconsole.conf and add FONT=latarcyrheb-sun32 for a bigger console font
-and add KEYMAP.
+// Edit /etc/vconsole.conf and add FONT=latarcyrheb-sun32 for a bigger console font
+// and add KEYMAP.
   # emacs /etc/vconsole.conf
 KEYMAP=en-latin1
 FONT=latarcyrheb-sun32
 
-Edit /etc/hostname and add archlinux.objecteffects.com
+// Edit /etc/hostname and add archlinux.objecteffects.com
   # emacs /etc/hostname
 archlinux.objecteffects.com
 
-Edit /etc/hosts and add localhost and this machine.
+// Edit /etc/hosts and add localhost and this machine.
   # emacs /etc/hosts
 127.0.0.1	localhost
 ::1		localhost
@@ -89,17 +90,14 @@ Edit /etc/hosts and add localhost and this machine.
   # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
   # grub-mkconfig -o /boot/grub/grub.cfg
 
-Edit sshd_config and add root login
+// Edit sshd_config and add root login
   # emacs /etc/ssh/sshd_config
 PermitRootLogin yes
 
   # passwd root
   secret
 
-  # emacs /etc/group
-Add rusty to wheel and network.
-
-  # systemctl enable sshd.service
+# systemctl enable sshd.service
   # systemctl enable systemd-resolved.service
   # systemctl enable systemd-networkd.service
   # hp systemctl enable wpa_supplicant@wlan0.service
@@ -131,26 +129,26 @@ RouteMetric=20
   # umount /mnt/boot
   # swapoff /mnt/swapfile
   # umount /mnt
+
   # reboot
 
 
-Wheel needed for su permission.
+// Wheel needed for su permission.
   # useradd -m -G users,wheel rusty
 
-  # passwd rusty
-  secret
+// Random stuff
 
-Update weekly: pacman -Syu
-Check for orphaned packages: pacman -Qtd
-Check for failed services: systemctl --failed
-Check for errors in the log files: journalctl -p 3 -xb
+// Update weekly: pacman -Syu
+// Check for orphaned packages: pacman -Qtd
+// Check for failed services: systemctl --failed
+// Check for errors in the log files: journalctl -p 3 -xb
 
-ethernet: enp0s20f0u1u2
-display: 1920x1280@60Hz
-display: 800x600x32
-grub command videoinfo
-grub command vbeinfo
+// ethernet: enp0s20f0u1u2
+// display: 1920x1280@60Hz
+// display: 800x600x32
+// grub command videoinfo
+// grub command vbeinfo
 
-ipup
-dhcpcd
-systemctl start sshd
+// ipup
+// dhcpcd
+// systemctl start sshd
