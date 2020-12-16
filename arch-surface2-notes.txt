@@ -1,14 +1,3 @@
-To get name of wifi network interface:
-  # ip addr
-
-  # iwctl
-  [iwd]# device list
-  [iwd]# station wlan0 scan
-  [iwd]# station wlan0 get-networks
-  [iwd]# station wlan0 connect "The Pulsating Inconvenience"
-
-Or, all at once:
-  # iwctl --passphrase passphrase station device connect "The Pulsating Inconvenience"
 
 =============================================
 for hp stream
@@ -17,12 +6,14 @@ nvme0n1p with mmcblk0p
 and to start gdisk replace
 nvme0n1 with mmcblk0.
 ==============================================
+The pound sign is root's prompt; type or copy+paste whatever's after it.
+Lines flush left after a root prompt line you copy and paste or type.
 
 Verify network is working
   # ip addr
 
   # passwd root
-  secret
+secret
 
   # systemctl start sshd.service
 
@@ -55,29 +46,32 @@ Get list of disks.
 
   # genfstab -U /mnt >> /mnt/etc/fstab
 
-Add/fix swap file to fstab if not there:
+Add/fix swap file to fstab if not there (genfstab added it):
+  # emacs /mnt/etc/fstab
 /swapfile none swap defaults 0 0
 
   # arch-chroot /mnt
 
   # pacman -S emacs-nox vim emacs hwinfo e2fsprogs dosfstools man-db man-pages
   # pacman -S texinfo upower acpi grub efibootmgr intel-ucode
-  # pacman -S wpa_supplicant dhcpcd ntp openssh iproute2
-(Choose systemd-resolvconf if asked.)
+  # pacman -S wpa_supplicant dhcpcd systemd-resolvconf ntp openssh iproute2
+(Choose systemd-resolvconf if asked?)
 
   # ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
   # hwclock --systohc
 
 Uncomment two lines for en_US
   # emacs /etc/locale.gen
+
+Generate local files
   # locale-gen
 
 Edit /etc/locale.conf and add LANG=en_US.UTF-8
   # emacs /etc/locale.conf
 LANG=en_US.UTF-8
 
-Edit /etc/vconsole.conf and add FONT=latarcyrheb-sun32 for a bigger console font.
-Edit /etc/vconsole.conf and add KEYMAP and FONT'
+Edit /etc/vconsole.conf and add FONT=latarcyrheb-sun32 for a bigger console font
+and add KEYMAP.
   # emacs /etc/vconsole.conf
 KEYMAP=en-latin1
 FONT=latarcyrheb-sun32
