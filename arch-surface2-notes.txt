@@ -97,11 +97,27 @@ PermitRootLogin yes
   # passwd root
   secret
 
-# systemctl enable sshd.service
+  # systemctl enable sshd.service
   # systemctl enable systemd-resolved.service
   # systemctl enable systemd-networkd.service
   # hp systemctl enable wpa_supplicant@wlan0.service
   # surface systemctl enable wpa_supplicant@wlp1s0.service
+
+// set up wpa_cli and to allow wpa_supplicant to edit the
+// config file.
+  # emacs /etc/wpa_supplicant/wpa_supplicant.conf
+ctrl_interface=/run/wpa_supplicant
+update_config=1
+  # wpa_supplicant -B -i interface -c /etc/wpa_supplicant/wpa_supplicant.conf
+  # wpa_cli
+scan
+scan-results
+add_network
+set_network ssid "my ssid"
+set_network 0 psk "my wifi passphrase"
+enable_network 0
+save_config
+quit
 
   # emacs /etc/systemd/network/20-wired.network 
 [Match]
