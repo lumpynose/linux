@@ -1,8 +1,15 @@
 =============================================
 For hp stream replace SDX with mmcblk0
 For ms surface replacd SDX with nvme0n1
+For old thinkpad replace SDXp with sda, and SDX with sda
+
 For hp stream replace WIFI with wlan0
 For ms surface replace WIFI with wlp1s0
+For old thinkpad replace WIFI with
+
+For hp stream replace WIRED with enp0s20u1
+For ms surface replace WIRED with enp0s20f0u1u2
+For old thinkpad replace WIRED with
 ==============================================
 
 // The pound sign is root's prompt; type or copy+paste whatever's after it.
