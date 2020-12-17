@@ -7,13 +7,15 @@ For ms surface replace WIFI with wlp1s0
 
 // The pound sign is root's prompt; type or copy+paste whatever's after it.
 // Lines flush left after a root prompt line you copy and paste or type.
-// Stuff after // are comments
+// Stuff after // is comments
 
 // Verify network is working
   # ip addr
 
   # passwd root
 secret
+
+// If you have a wired connection.
 
   # systemctl start sshd.service
 
