@@ -51,7 +51,7 @@ w
 
   # genfstab -U /mnt >> /mnt/etc/fstab
 
-// Add/fix swap file to fstab if not there (genfstab added it):
+// Add/fix swap file in fstab if not there (genfstab added it):
   # emacs /mnt/etc/fstab
 /swapfile none swap defaults 0 0
 
@@ -68,7 +68,7 @@ w
 // Uncomment two lines for en_US
   # emacs /etc/locale.gen
 
-// Generate local files
+// Generate locale files
   # locale-gen
 
 // Edit /etc/locale.conf and add LANG=en_US.UTF-8
@@ -99,7 +99,7 @@ archlinux.objecteffects.com
 PermitRootLogin yes
 
   # passwd root
-  secret
+secret
 
   # systemctl enable sshd.service
   # systemctl enable systemd-resolved.service
@@ -115,7 +115,8 @@ PermitRootLogin yes
   # emacs /etc/wpa_supplicant/wpa_supplicant.conf
 ctrl_interface=/run/wpa_supplicant
 update_config=1
-  // surface
+
+// start wpa_supplicant
   # wpa_supplicant -B -i WIFI -c /etc/wpa_supplicant/wpa_supplicant.conf
 
 // Edit the wpa_supplicant.conf with your settings.
