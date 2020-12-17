@@ -1,11 +1,10 @@
-
 =============================================
-for hp stream
-same as arch-surface2-notes.txt except in it replace
-nvme0n1p with mmcblk0p
-and to start gdisk replace
-nvme0n1 with mmcblk0.
+For hp stream replace SDX with mmcblk0
+For ms surface replacd SDX with nvme0n1
+For hp stream replace WIFI with wlan0
+For ms surface replace WIFI with wlp1s0
 ==============================================
+
 // The pound sign is root's prompt; type or copy+paste whatever's after it.
 // Lines flush left after a root prompt line you copy and paste or type.
 // Stuff after // are comments
@@ -25,18 +24,21 @@ secret
 // Get list of disks.
   # lsblk
 
-  # gdisk /dev/nvme0n1
+// For hp stream replace SDX with mmcblk0
+// For ms surface replacd SDX with nvme0n1
+
+  # gdisk /dev/SDX
 o // wipes partition table
 n return, +260M, ef00 // efi partition
 n return, return, return // 8300, linux partition
 w
 
-  # mkfs.fat -F32 /dev/nvme0n1p1
-  # mkfs.ext4 /dev/nvme0n1p2
+  # mkfs.fat -F32 /dev/SDXp1
+  # mkfs.ext4 /dev/SDXp2
 
-  # mount /dev/nvme0n1p2 /mnt
+  # mount /dev/SDXp2 /mnt
   # mkdir /mnt/boot
-  # mount /dev/nvme0n1p1 /mnt/boot
+  # mount /dev/SDXp1 /mnt/boot
 
   # dd if=/dev/zero of=/mnt/swapfile bs=1M count=512 status=progress
   # chmod 600 /mnt/swapfile
@@ -100,29 +102,41 @@ PermitRootLogin yes
   # systemctl enable sshd.service
   # systemctl enable systemd-resolved.service
   # systemctl enable systemd-networkd.service
-  # hp systemctl enable wpa_supplicant@wlan0.service
-  # surface systemctl enable wpa_supplicant@wlp1s0.service
+
+// For hp stream replace WIFI with wlan0
+// For ms surface replace WIFI with wlp1s0
+
+  # systemctl enable wpa_supplicant@WIFI.service
 
 // set up wpa_cli and to allow wpa_supplicant to edit the
 // config file.
   # emacs /etc/wpa_supplicant/wpa_supplicant.conf
 ctrl_interface=/run/wpa_supplicant
 update_config=1
-  # wpa_supplicant -B -i interface -c /etc/wpa_supplicant/wpa_supplicant.conf
-  # wpa_cli
+  // surface
+  # wpa_supplicant -B -i WIFI -c /etc/wpa_supplicant/wpa_supplicant.conf
+
+// Edit the wpa_supplicant.conf with your settings.
+  # wpa_cli -i WIFI
 scan
-scan-results
+scan_results
 add_network
-set_network ssid "my ssid"
+set_network 0 ssid "my ssid"
 set_network 0 psk "my wifi passphrase"
 enable_network 0
 save_config
 quit
 
+// Instead of using wpa_cli you can do it all in one go if you know
+// your wifi's SSID:
+wpa_passphrase "my ssid" "my wifi passphrase" >> /etc/wpa_supplicant/wpa_supplicant.conf
+ 
+// For hp stream replace WIRED with enp0s20u1
+// For ms surface replace WIRED with enp0s20f0u1u2
+
   # emacs /etc/systemd/network/20-wired.network 
 [Match]
-hp Name=enp0s20u1
-surface Name=enp0s20f0u1u2
+Name=WIRED
 
 [Network]
 DHCP=yes
@@ -130,10 +144,12 @@ DHCP=yes
 [DHCP]
 RouteMetric=10
 
+// For hp stream replace WIFI with wlan0
+// For ms surface replace WIFI with wlp1s0
+
   # emacs /etc/systemd/network/25-wireless.network 
 [Match]
-hp Name=wlan0
-surface Name=wlp1s0
+Name=WIFI
 
 [Network]
 DHCP=yes
