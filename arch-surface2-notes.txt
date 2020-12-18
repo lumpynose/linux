@@ -16,14 +16,17 @@ For old thinkpad replace WIRED with
 // Lines flush left after a root prompt line you copy and paste or type.
 // Stuff after // is comments
 
+// old thinkpad is bios mode boot
+  # ls /sys/firmware/efi/efivars (No such file or directory)
+  
 // Verify network is working
   # ip addr
 
+// Set root password so we can login with ssh.
   # passwd root
 secret
 
 // If you have a wired connection.
-
   # systemctl start sshd.service
 
 // Now connect to system with putty.
@@ -36,18 +39,34 @@ secret
 // For hp stream replace SDX with mmcblk0
 // For ms surface replacd SDX with nvme0n1
 
+// Procedure for UEFI boot (hp stream and ms surface):
   # gdisk /dev/SDX
 o // wipes partition table
 n return, +260M, ef00 // efi partition
 n return, return, return // 8300, linux partition
 w
 
+// Procedure for UEFI boot (hp stream and ms surface):
   # mkfs.fat -F32 /dev/SDXp1
   # mkfs.ext4 /dev/SDXp2
 
   # mount /dev/SDXp2 /mnt
   # mkdir /mnt/boot
   # mount /dev/SDXp1 /mnt/boot
+
+// Procedure for BIOS boot (old thinkpad):
+  # gdisk /dev/sda
+o // wipes partition table
+n return, +1M, ef02 // BIOS boot partition
+n return, return, return // 8300, linux partition
+w
+
+// Procedure for BIOS boot (old thinkpad):
+  # mkfs.ext4 /dev/sda2
+  # mount /dev/sda2 /mnt
+  # mkdir /mnt/boot
+
+// Continue for both systems.
 
   # dd if=/dev/zero of=/mnt/swapfile bs=1M count=512 status=progress
   # chmod 600 /mnt/swapfile
@@ -65,8 +84,9 @@ w
   # arch-chroot /mnt
 
   # pacman -S emacs-nox vim emacs hwinfo e2fsprogs dosfstools man-db man-pages
-  # pacman -S texinfo upower acpi grub efibootmgr intel-ucode
-  # pacman -S wpa_supplicant dhcpcd systemd-resolvconf ntp openssh iproute2
+  # pacman -S texinfo udev upower acpi grub efibootmgr intel-ucode
+// No need for wpa_supplicant on old thinkpad.
+  # pacman -S wpa_supplicant dhcpcd dhcping systemd-resolvconf ntp openssh iproute2
 // Choose systemd-resolvconf if asked?
 
   # ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
@@ -98,9 +118,14 @@ archlinux.objecteffects.com
 ::1		localhost
 127.0.0.1	archlinux.objecteffects.com archlinux
 
+// Install boot loader (UEFI)
   # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-  # grub-mkconfig -o /boot/grub/grub.cfg
+  
+// Install boot loader (BIOS)
+  # grub-install --target=i386-pc /dev/sdX
 
+  # grub-mkconfig -o /boot/grub/grub.cfg
+  
 // Edit sshd_config and add root login
   # emacs /etc/ssh/sshd_config
 PermitRootLogin yes
@@ -111,9 +136,13 @@ secret
   # systemctl enable sshd.service
   # systemctl enable systemd-resolved.service
   # systemctl enable systemd-networkd.service
+  # systemctl enable dhcpcd.service
 
 // For hp stream replace WIFI with wlan0
 // For ms surface replace WIFI with wlp1s0
+
+// For old thinkpad no wpa_suplicant, just dhcpcd.
+  # systemctl enable dhcpcd@enp2s1.service 
 
   # systemctl enable wpa_supplicant@WIFI.service
 
