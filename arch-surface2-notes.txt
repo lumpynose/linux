@@ -148,13 +148,17 @@ secret
 
   # systemctl enable wpa_supplicant@WIFI.service
 E.g.:
-  # systemctl enable wpa_supplicant@wlp1s0.service
+  # systemctl enable wpa_supplicant@wlp1s0.service  // surface and/or hp
+  # systemctl enable wpa_supplicant@wlan0.service   // raspberry pi
 
 // Instead of using wpa_cli you can do it all in one go if you know
 // your wifi's SSID:
-// wpa_passphrase "my ssid" "my wifi passphrase" >> /etc/wpa_supplicant/wpa_supplicant.conf
+// wpa_passphrase "my ssid" "my wifi passphrase" >> /etc/wpa_supplicant/wpa_supplicant-WIFI.conf
  
-wpa_passphrase "The Pulsating Inconvenience" "secret" >> /etc/wpa_supplicant/wpa_supplicant-wlp1s0.conf
+// surface and/or hp 
+  # wpa_passphrase "The Pulsating Inconvenience" "secret" >> /etc/wpa_supplicant/wpa_supplicant-wlp1s0.conf
+// raspberry pi
+  # wpa_passphrase "The Pulsating Inconvenience" "secret" >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 
   # exit
   # umount /mnt/boot
