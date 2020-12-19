@@ -14,12 +14,12 @@ For old thinkpad replace WIRED with
 
 // The pound sign is root's prompt; type or copy+paste whatever's after it.
 // Lines flush left after a root prompt line you copy and paste or type.
-// Stuff after // is comments
+// Stuff after // is comments.
 
-// old thinkpad is bios mode boot
+// old thinkpad is bios mode boot.
   # ls /sys/firmware/efi/efivars (No such file or directory)
   
-// Verify network is working
+// Verify network is working.
   # ip addr
 
 // Set root password so we can login with ssh.
@@ -36,8 +36,8 @@ secret
 // Get list of disks.
   # lsblk
 
-// For hp stream replace SDX with mmcblk0
-// For ms surface replacd SDX with nvme0n1
+// For hp stream replace SDX with mmcblk0.
+// For ms surface replacd SDX with nvme0n1.
 
 // Procedure for UEFI boot (hp stream and ms surface):
   # gdisk /dev/SDX
@@ -77,7 +77,8 @@ w
 
   # genfstab -U /mnt >> /mnt/etc/fstab
 
-// Add/fix swap file in fstab if not there (genfstab added it):
+// Add/fix swap file in fstab if not there.
+// (Unnecessary since genfstab added it).
   # emacs /mnt/etc/fstab
 /swapfile none swap defaults 0 0
 
@@ -92,13 +93,13 @@ w
   # ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
   # hwclock --systohc
 
-// Uncomment two lines for en_US
+// Uncomment two lines for en_US.
   # emacs /etc/locale.gen
 
-// Generate locale files
+// Generate locale files.
   # locale-gen
 
-// Edit /etc/locale.conf and add LANG=en_US.UTF-8
+// Edit /etc/locale.conf and add LANG=en_US.UTF-8.
   # emacs /etc/locale.conf
 LANG=en_US.UTF-8
 
@@ -108,7 +109,7 @@ LANG=en_US.UTF-8
 KEYMAP=en-latin1
 FONT=latarcyrheb-sun32
 
-// Edit /etc/hostname and add archlinux.objecteffects.com
+// Edit /etc/hostname and add archlinux.objecteffects.com.
   # emacs /etc/hostname
 archlinux.objecteffects.com
 
@@ -118,15 +119,15 @@ archlinux.objecteffects.com
 ::1		localhost
 127.0.0.1	archlinux.objecteffects.com archlinux
 
-// Install boot loader (UEFI)
+// Install boot loader (UEFI).
   # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
   
-// Install boot loader (BIOS)
+// Install boot loader (BIOS).
   # grub-install --target=i386-pc /dev/sdX
 
   # grub-mkconfig -o /boot/grub/grub.cfg
   
-// Edit sshd_config and add root login
+// Edit sshd_config and add root login.
   # emacs /etc/ssh/sshd_config
 PermitRootLogin yes
 
@@ -138,63 +139,22 @@ secret
   # systemctl enable systemd-networkd.service
   # systemctl enable dhcpcd.service
 
-// For hp stream replace WIFI with wlan0
-// For ms surface replace WIFI with wlp1s0
+// For hp stream replace WIFI with wlan0.
+// For ms surface replace WIFI with wlp1s0.
+// Or whatever "ip addr" shows.
 
 // For old thinkpad no wpa_suplicant, just dhcpcd.
-  # systemctl enable dhcpcd@enp2s1.service 
+//   # systemctl enable dhcpcd@enp2s1.service 
 
   # systemctl enable wpa_supplicant@WIFI.service
-
-// set up wpa_cli and to allow wpa_supplicant to edit the
-// config file.
-  # emacs /etc/wpa_supplicant/wpa_supplicant.conf
-ctrl_interface=/run/wpa_supplicant
-update_config=1
-
-// start wpa_supplicant
-  # wpa_supplicant -B -i WIFI -c /etc/wpa_supplicant/wpa_supplicant.conf
-
-// Edit the wpa_supplicant.conf with your settings.
-  # wpa_cli -i WIFI
-scan
-scan_results
-add_network
-set_network 0 ssid "my ssid"
-set_network 0 psk "my wifi passphrase"
-enable_network 0
-save_config
-quit
+E.g.:
+  # systemctl enable wpa_supplicant@wlp1s0.service
 
 // Instead of using wpa_cli you can do it all in one go if you know
 // your wifi's SSID:
-wpa_passphrase "my ssid" "my wifi passphrase" >> /etc/wpa_supplicant/wpa_supplicant.conf
+// wpa_passphrase "my ssid" "my wifi passphrase" >> /etc/wpa_supplicant/wpa_supplicant.conf
  
-// For hp stream replace WIRED with enp0s20u1
-// For ms surface replace WIRED with enp0s20f0u1u2
-
-  # emacs /etc/systemd/network/20-wired.network 
-[Match]
-Name=WIRED
-
-[Network]
-DHCP=yes
-
-[DHCP]
-RouteMetric=10
-
-// For hp stream replace WIFI with wlan0
-// For ms surface replace WIFI with wlp1s0
-
-  # emacs /etc/systemd/network/25-wireless.network 
-[Match]
-Name=WIFI
-
-[Network]
-DHCP=yes
-
-[DHCP]
-RouteMetric=20
+wpa_passphrase "The Pulsating Inconvenience" "secret" >> /etc/wpa_supplicant/wpa_supplicant-wlp1s0.conf
 
   # exit
   # umount /mnt/boot
