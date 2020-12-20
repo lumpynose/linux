@@ -1,3 +1,13 @@
+// Arch  notes
+
+  # pacman -S xorg xorg-xinit xorg-apps
+  # pacman -S i3-wm
+
+  # emacs .xinitrc
+i3 &
+xterm &
+// Debian notes:
+
 Turn off x running at boot:
 # systemctl set-default multi-user.target
 See: https://unix.stackexchange.com/questions/264393/how-to-disable-x-server-autostart-in-debian-jessie
