@@ -137,7 +137,7 @@ secret
   # systemctl enable sshd.service
   # systemctl enable systemd-resolved.service
   # systemctl enable systemd-networkd.service
-  # systemctl enable dhcpcd.service
+  # systemctl enable dhcpcd.service // makes a link on arch pi
 
 // For hp stream replace WIFI with wlan0.
 // For ms surface replace WIFI with wlp1s0.
