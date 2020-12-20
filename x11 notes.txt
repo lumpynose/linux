@@ -1,18 +1,23 @@
 // Arch  notes
 
   # pacman -S xorg xorg-xinit xorg-apps
+  # pacman -S xorg-server
+  # pacman -S xorg-xterm
   # pacman -S i3-wm
+  # pacman -S xf86-video-intel
+  # pacman -S xf86-video-fbdev
 
   # emacs .xinitrc
 i3 &
-xterm &
+xterm
+
+====================================
+
 // Debian notes:
 
 Turn off x running at boot:
 # systemctl set-default multi-user.target
 See: https://unix.stackexchange.com/questions/264393/how-to-disable-x-server-autostart-in-debian-jessie
-
-====================================
 
 # apt install openbox
 # apt install xinit
@@ -20,11 +25,7 @@ See: https://unix.stackexchange.com/questions/264393/how-to-disable-x-server-aut
 
 (# apt install menu ?)
 
-====================================
-
 # apt install ntp
-
-====================================
 
 To run Openbox from the commandline, setup the .xinitrc file in your home directory and insert the following line:
 
