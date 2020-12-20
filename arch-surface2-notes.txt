@@ -134,9 +134,9 @@ PermitRootLogin yes
   # passwd root
 secret
 
-  # systemctl enable sshd.service
-  # systemctl enable systemd-resolved.service
-  # systemctl enable systemd-networkd.service
+  # systemctl enable sshd.service             // no link made on arch pi
+  # systemctl enable systemd-resolved.service // no link made on arch pi
+  # systemctl enable systemd-networkd.service // no link made on arch pi
   # systemctl enable dhcpcd.service // makes a link on arch pi
 
 // For hp stream replace WIFI with wlan0.
