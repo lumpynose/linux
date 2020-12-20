@@ -84,7 +84,7 @@ w
 
   # arch-chroot /mnt
 
-  # pacman -S emacs-nox vim hwinfo e2fsprogs dosfstools man-db man-pages
+  # pacman -S emacs-nox vi hwinfo e2fsprogs dosfstools man-db man-pages
   # pacman -S texinfo udev upower acpi grub efibootmgr intel-ucode
 // No need for wpa_supplicant on old thinkpad.
   # pacman -S wpa_supplicant dhcpcd dhcping systemd-resolvconf ntp openssh iproute2
