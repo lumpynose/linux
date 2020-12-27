@@ -19,7 +19,6 @@ Turn off x running at boot:
 # systemctl set-default multi-user.target
 See: https://unix.stackexchange.com/questions/264393/how-to-disable-x-server-autostart-in-debian-jessie
 
-# apt install openbox
 # apt install xinit
 # apt install xterm
 
@@ -27,8 +26,94 @@ See: https://unix.stackexchange.com/questions/264393/how-to-disable-x-server-aut
 
 # apt install ntp
 
-To run Openbox from the commandline, setup the .xinitrc file in your home directory and insert the following line:
-
-    exec openbox-session
-
 Then execute startx.
+
+====================================
+
+~/.xinitrc:
+
+xrdb < ~/.Xdefaults
+
+xscreensaver -no-splash -verbose -log xscreensaver.log &
+
+i3 &
+
+xterm
+
+====================================
+
+~/.Xdefaults
+
+xscreensaver.timeout:           0:00:10
+xscreensaver.programs:          glslideshow -root -zoom 80
+xscreensaver.mode:              one
+xscreensaver.selected:          0
+xscreensaver.verbose:           true
+xscreensaver.dpmsEnabled:       False
+xscreensaver.dpmsQuickOff:      False
+xscreensaver.dpmsStandby:       4:00:00
+xscreensaver.dpmsSuspend:       4:00:00
+xscreensaver.dpmsOff:           6:00:00
+xscreensaver.chooseRandomImages: True
+xscreensaver.imageDirectory:    /home/rusty/pics
+
+====================================
+
+~/.xscreensaver
+
+timeout:        0:01:00
+cycle:          0:10:00
+lock:           False
+lockTimeout:    0:00:00
+passwdTimeout:  0:00:30
+visualID:       default
+installColormap:    True
+verbose:        True
+timestamp:      True
+splash:         True
+splashDuration: 0:00:05
+demoCommand:    xscreensaver-demo
+prefsCommand:   xscreensaver-demo -prefs
+nice:           10
+memoryLimit:    0
+fade:           True
+unfade:         False
+fadeSeconds:    0:00:03
+fadeTicks:      20
+captureStderr:  True
+ignoreUninstalledPrograms:False
+font:           *-medium-r-*-140-*-m-*
+dpmsEnabled:    False
+dpmsQuickOff:   False
+dpmsStandby:    2:00:00
+dpmsSuspend:    2:00:00
+dpmsOff:        4:00:00
+grabDesktopImages:  False
+grabVideoFrames:    False
+chooseRandomImages: True
+imageDirectory: /home/rusty/pics
+
+mode:           one
+selected:       0
+
+textMode:       url
+textLiteral:    XScreenSaver
+textFile:
+textProgram:    fortune
+textURL:        https://planet.debian.org/rss20.xml
+
+programs:                                                                     \
+                                glslideshow -root                           \n\
+
+
+pointerPollTime:    0:00:05
+pointerHysteresis:  10
+windowCreationTimeout:0:00:30
+initialDelay:   0:00:00
+GetViewPortIsFullOfLies:False
+procInterrupts: True
+xinputExtensionDev: False
+overlayStderr:  True
+authWarningSlack:   20
+
+====================================
