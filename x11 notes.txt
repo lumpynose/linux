@@ -32,7 +32,11 @@ Then execute startx.
 
 ~/.xinitrc:
 
-xrdb < ~/.Xdefaults
+xrandr --dpi 222
+xrandr --dpi 222
+
+xrdb -merge ~/.Xresources
+xrdb -load ~/.Xdefaults
 
 xscreensaver -no-splash -verbose -log xscreensaver.log &
 
@@ -44,19 +48,30 @@ xterm
 
 ~/.Xdefaults
 
+Xft.dpi: 222
+
 xscreensaver.timeout:           0:00:10
-xscreensaver.programs:          glslideshow -root -zoom 80
-xscreensaver.mode:              one
-xscreensaver.selected:          0
 xscreensaver.verbose:           true
-xscreensaver.dpmsEnabled:       False
-xscreensaver.dpmsQuickOff:      False
+xscreensaver.dpmsEnabled:       false
+xscreensaver.dpmsQuickOff:      false
 xscreensaver.dpmsStandby:       4:00:00
 xscreensaver.dpmsSuspend:       4:00:00
 xscreensaver.dpmsOff:           6:00:00
-xscreensaver.chooseRandomImages: True
+
+xscreensaver.chooseRandomImages:true
 xscreensaver.imageDirectory:    /home/rusty/pics
+xscreensaver.programs:          glslideshow -root -zoom 60
+xscreensaver.mode:              one
+xscreensaver.selected:          0
+
 xterm*font:                     -b&h-lucidatypewriter-medium-r-normal-sans-26-190-100-100-m-159-iso8859-1
+
+====================================
+
+~/.Xresources
+
+# doesn't seem to do anything?
+Xft.dpi: 222
 
 ====================================
 
