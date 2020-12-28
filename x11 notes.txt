@@ -79,57 +79,34 @@ Xft.dpi: 222
 
 timeout:        0:01:00
 cycle:          0:10:00
-lock:           False
+lock:           false
 lockTimeout:    0:00:00
 passwdTimeout:  0:00:30
-visualID:       default
-installColormap:    True
-verbose:        True
-timestamp:      True
-splash:         True
-splashDuration: 0:00:05
-demoCommand:    xscreensaver-demo
-prefsCommand:   xscreensaver-demo -prefs
-nice:           10
+verbose:        true
+timestamp:      true
+splash:         false
 memoryLimit:    0
-fade:           True
-unfade:         False
+fade:           true
+unfade:         false
 fadeSeconds:    0:00:03
 fadeTicks:      20
-captureStderr:  True
-ignoreUninstalledPrograms:False
+captureStderr:  true
 font:           *-medium-r-*-140-*-m-*
-dpmsEnabled:    False
-dpmsQuickOff:   False
-dpmsStandby:    2:00:00
-dpmsSuspend:    2:00:00
-dpmsOff:        4:00:00
-grabDesktopImages:  False
-grabVideoFrames:    False
-chooseRandomImages: True
-imageDirectory: /home/rusty/pics
 
-mode:           one
-selected:       0
+#mode:          one
+#selected:      0
+#programs:                                    \
+#               glslideshow -root -zoom 60    \n\
 
-textMode:       url
-textLiteral:    XScreenSaver
-textFile:
-textProgram:    fortune
-textURL:        https://planet.debian.org/rss20.xml
-
-programs:                                                                     \
-                                glslideshow -root                           \n\
-
-
-pointerPollTime:    0:00:05
-pointerHysteresis:  10
-windowCreationTimeout:0:00:30
-initialDelay:   0:00:00
+pointerPollTime:        0:00:05
+pointerHysteresis:      10
+windowCreationTimeout:  0:00:30
+initialDelay:           0:00:00
 GetViewPortIsFullOfLies:False
-procInterrupts: True
-xinputExtensionDev: False
-overlayStderr:  True
-authWarningSlack:   20
+procInterrupts:         true
+xinputExtensionDev:     false
+overlayStderr:          true
+authWarningSlack:       20
+
 
 ====================================
