@@ -93,11 +93,6 @@ fadeTicks:      20
 captureStderr:  true
 font:           *-medium-r-*-140-*-m-*
 
-#mode:          one
-#selected:      0
-#programs:                                    \
-#               glslideshow -root -zoom 60    \n\
-
 pointerPollTime:        0:00:05
 pointerHysteresis:      10
 windowCreationTimeout:  0:00:30
