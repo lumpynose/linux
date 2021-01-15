@@ -1,0 +1,14 @@
+[Unit]
+Description=Start the x server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/xinit
+WorkingDirectory=/home/console
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=console
+
+[Install]
+WantedBy=multi-user.target
