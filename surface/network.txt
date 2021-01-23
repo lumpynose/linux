@@ -27,4 +27,7 @@ fix above and use clear text password which is commented out
 $ sudo apt install dhcpcd5
 $ sudo systemctl enable dhcpcd.service
 
+# I already had wpa_supplicant running for a hardwired network
+# but I don't understand how it was working without dhcp set up
+# as per the above two lines.
 $ sudo systemctl restart wpa_supplicant
