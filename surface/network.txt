@@ -24,7 +24,7 @@ iface wlp1s0 inet dhcp
 $ sudo wpa_passphrase "The Pulsating Inconvenience" secret > /etc/wpa_supplicant/wpa_supplicant.conf
 fix above and use clear text password which is commented out
 
-$ sudo systemctl restart wpa_supplicant
-
 $ sudo apt install dhcpcd5
 $ sudo systemctl enable dhcpcd.service
+
+$ sudo systemctl restart wpa_supplicant
