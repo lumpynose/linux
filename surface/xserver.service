@@ -1,0 +1,20 @@
+# this goes in /etc/systemd/system
+# then do the usual to enable and start it;
+# I followed the instructions at
+# documentation > linux > usage > systemd
+# on the raspberry pi site.
+
+[Unit]
+Description=Start the x server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/xinit
+WorkingDirectory=/home/console
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
