@@ -1,0 +1,11 @@
+# stuff for sunfounder 7 inch monitor
+
+# hdmi_cvt=1024 600 60 3 0 0 0
+hdmi_cvt=1280 800 60 5 0 0 0
+
+hdmi_group=2
+
+#hdmi_mode=87
+hdmi_mode=29
+
+hdmi_drive=2
