@@ -1,0 +1,5 @@
+xset -dpms s off s noblank
+
+xsetroot -solid '#303030'
+
+unclutter -root
