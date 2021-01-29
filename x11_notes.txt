@@ -1,3 +1,15 @@
+// most of this is obsolete (arch specific) but for debian on the hp laptop I needed
+// to create an ~/.xserverrc file containing the following and doing a chmod +x on it:
+
+#!/bin/sh
+
+exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR
+
+// The default xserverrc file doesn't have the vt$XDG_VTNR thing and tries to
+// use /dev/tty0 but the console on the hp laptop is tty1
+
+==================================================================================
+
 // Arch  notes
 
   # pacman -S xorg xorg-xinit xorg-apps

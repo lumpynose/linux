@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# this goes in /etc/X11/xinit/xserverrc
+# needs the vt thing at the end.  testing to see
+# if the -bs and -reset helps python slideshow.
+
+exec /usr/bin/X -reset -bs -nolisten tcp "$@" vt$XDG_VTNR

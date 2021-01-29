@@ -1,30 +1,33 @@
-# these two get add-apt-repository:
+// these two get add-apt-repository:
 $ sudo apt-get install software-properties-common
 $ sudo apt-get update
 
-# gets the new kernel:
+// gets the new kernel:
 $ sudo add-apt-repository 'deb http://deb.debian.org/debian buster-backports main'
 $ sudo apt-get update
 $ sudo apt-get install linux-image-5.8.0-0.bpo.2-amd64-unsigned -y
 
-# above is from
+// above is from
 https://itsfoss.com/add-apt-repository-command-not-found/
 https://www.addictivetips.com/ubuntu-linux-tips/linux-kernel-5-8-and-5-9-debian-10/
 
-# get the firmware
+// get the firmware
 $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-# use dmesg to see which one to use; grep for iwl
+// use dmesg to see which one to use; grep for iwl
 
-# add the following to /etc/network/interfaces
+// add the following to /etc/network/interfaces
 allow-hotplug wlp1s0
 iface wlp1s0 inet dhcp
     wpa-ssid "The Pulsating Inconvenience"
     wpa-psk secret
 
+// after the following use the clear text password which is commented out
 $ sudo wpa_passphrase "The Pulsating Inconvenience" secret > /etc/wpa_supplicant/wpa_supplicant.conf
-fix above and use clear text password which is commented out
-
-$ sudo systemctl restart wpa_supplicant
 
 $ sudo apt install dhcpcd5
 $ sudo systemctl enable dhcpcd.service
+
+// I already had wpa_supplicant running for a hardwired network
+// but I don't understand how it was working without dhcp set up
+// as per the above two lines.
+$ sudo systemctl restart wpa_supplicant
