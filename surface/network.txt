@@ -5,7 +5,8 @@ $ sudo apt-get update
 // gets the new kernel:
 $ sudo add-apt-repository 'deb http://deb.debian.org/debian buster-backports main'
 $ sudo apt-get update
-$ sudo apt-get install linux-image-5.8.0-0.bpo.2-amd64-unsigned -y
+$ sudo apt-get install linux-image-amd64/buster-backports
+// use "dpkg --print-architecture" to get the architecutre (amd64 in the above).
 
 // above is from
 https://itsfoss.com/add-apt-repository-command-not-found/
