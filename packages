@@ -3,3 +3,4 @@ xinit
 netselect-apt
 apt-file
 acpi
+x11-xserver-utils
