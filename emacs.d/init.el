@@ -5,3 +5,5 @@
 (setq require-final-newline t)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace nil 'local)
+
+(setq-default c-basic-offset 4)
