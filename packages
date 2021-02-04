@@ -7,3 +7,10 @@ x11-xserver-utils
 binutils
 bluetooth
 bluez
+sudo
+nmon
+gcc-8
+wget
+make
+maven
+unzip
