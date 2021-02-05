@@ -1,2 +1,10 @@
-[drm:amdgpu_pci_probe [amdgpu]] *ERROR* amdgpu requires firmware installed
-kern.log:Feb  2 19:00:38 tiny kernel: [    1.693328] amdgpu: See https://wiki.debian.org/Firmware for information about missing firmware
+# ugh, forgot where I found these.  fetched
+# them with git so somewhere on there.
+
+/usr/lib/firmware/iwlwifi-cc-a0-50.ucode
+/usr/lib/firmware/iwlwifi-cc-a0-59.ucode
+/usr/lib/firmware/iwlwifi-cc-a0-46.ucode
+/usr/lib/firmware/iwlwifi-cc-a0-53.ucode
+/usr/lib/firmware/iwlwifi-cc-a0-55.ucode
+/usr/lib/firmware/iwlwifi-cc-a0-48.ucode
+/usr/lib/firmware/rtl_nic/rtl8168fp-3.fw
