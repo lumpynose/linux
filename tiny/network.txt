@@ -3,18 +3,21 @@ $ sudo apt-get install software-properties-common
 $ sudo apt-get update
 
 // gets the new kernel:
+// use "dpkg --print-architecture" to get the architecutre (amd64 in the above).
 $ sudo add-apt-repository 'deb http://deb.debian.org/debian buster-backports main'
 $ sudo apt-get update
 $ sudo apt-get install linux-image-amd64/buster-backports
-// use "dpkg --print-architecture" to get the architecutre (amd64 in the above).
+
+// $ sudo apt install -t buster-backports nvidia-driver firmware-misc-nonfree
 
 // above is from
 https://itsfoss.com/add-apt-repository-command-not-found/
 https://www.addictivetips.com/ubuntu-linux-tips/linux-kernel-5-8-and-5-9-debian-10/
 
 // get the firmware
-$ git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 // use dmesg to see which one to use; grep for iwl
+$ git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+
 
 // add the following to /etc/network/interfaces
 allow-hotplug wlp1s0
