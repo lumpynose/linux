@@ -1,0 +1,2 @@
+[drm:amdgpu_pci_probe [amdgpu]] *ERROR* amdgpu requires firmware installed
+kern.log:Feb  2 19:00:38 tiny kernel: [    1.693328] amdgpu: See https://wiki.debian.org/Firmware for information about missing firmware
