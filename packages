@@ -1,17 +1,34 @@
-emacs-nox
-xinit
-netselect-apt
-apt-file
 acpi
-x11-xserver-utils
+adduser
+amd64-microcode
+apt-file
+apt-utils
 binutils
 bluetooth
-bluez
-sudo
-nmon
+emacs-nox
+firmware-amd-graphics
+firmware-linux
+firmware-linux-free
+firmware-linux-nonfree
+firmware-misc-nonfree
+firmware-realtek
 gcc-8
-wget
+git
+gzip
 make
 maven
+netselect-apt
+nmon
+pciutils
+sudo
 unzip
+usbutils
+wget
+x11-xserver-utils
+xinit
 libswt-gtk-4-jni (for eclipse)
+
+syncthing, from syncthing.net; see https://apt.syncthing.net/
+java, from oracle.com
+maven, tar, from apache.org
+eclipse, tar, from eclipse.org
