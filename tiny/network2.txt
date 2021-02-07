@@ -1,0 +1,16 @@
+// add the following to /etc/network/interfaces
+allow-hotplug wlp2s0
+iface wlp2s0 inet dhcp
+    wpa-ssid "The Pulsating Inconvenience"
+    wpa-psk secret
+
+// after the following use the clear text password which is commented out
+$ sudo wpa_passphrase "The Pulsating Inconvenience" secret > /etc/wpa_supplicant/wpa_supplicant.conf
+
+$ sudo apt install dhcpcd5
+$ sudo systemctl enable dhcpcd.service
+
+// I already had wpa_supplicant running for a hardwired network
+// but I don't understand how it was working without dhcp set up
+// as per the above two lines.
+$ sudo systemctl restart wpa_supplicant
