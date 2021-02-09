@@ -27,7 +27,10 @@ wget
 x11-xserver-utils
 xinit
 libswt-gtk-4-jni (for eclipse)
-
+libreadline-dev
+libusb-1.0-0-dev
+libhidapi-dev
+==========================================================================
 syncthing, from syncthing.net; see https://apt.syncthing.net/
 java, from oracle.com
 maven, tar, from apache.org
