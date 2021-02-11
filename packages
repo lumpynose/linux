@@ -19,6 +19,7 @@ make
 maven
 netselect-apt
 nmon
+ntfs-3g
 pciutils
 sudo
 unzip

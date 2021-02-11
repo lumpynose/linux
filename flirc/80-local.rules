@@ -1,0 +1,4 @@
+# goes in /etc/udev/rules.d
+
+ATTRS{name}=="flirc.tv flirc Keyboard", ACTION=="add", SYMLINK+="flirc"
+ATTRS{name}=="flirc.tv flirc Keyboard", ACTION=="add", RUN+="/usr/local/bin/flirc.sh"
