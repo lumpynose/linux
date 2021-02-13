@@ -17,6 +17,7 @@ export SYSTEMD_PAGER;	SYSTEMD_PAGER=''
 
 alias blank='xset dpms force off'
 alias cp="cp -i"
+alias date="date --rfc-email"
 alias grep='grep --color=auto'
 alias h='history'
 alias less="less --quit-if-one-screen --ignore-case --no-init"
@@ -28,8 +29,6 @@ alias pav='source ~/env/bin/activate'
 
 #alias blank='xset s reset;xset s blank;xset s on;xset s 1'
 
-#export DISPLAY; DISPLAY=:0
-# for remote x; e.g., MobaXterm
 if test -z "${DISPLAY}"
 then
     export DISPLAY; DISPLAY=:0
