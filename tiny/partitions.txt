@@ -10,3 +10,39 @@ nvme0n1     259:0    0    477G  0 disk
 └─nvme0n1p3 259:3    0    976M  0 part
 
 need to get rid of nvme0n1p3 and merge it with nvme0n1p2
+
+root@tiny:/var/log# blkid
+/dev/nvme0n1: PTUUID="53759901-e931-4844-8643-c7b579f584f0" PTTYPE="gpt"
+/dev/nvme0n1p1: UUID="6826-F23E" TYPE="vfat" PARTUUID="0935b278-5c56-4f22-ba63-0a4f26e25d6f"
+/dev/nvme0n1p2: UUID="cfd7205b-535e-4bc2-942a-3b95f3ede77d" TYPE="ext4" PARTUUID="c6ac0081-3a21-46a3-bec4-42a2ba16b70c"
+/dev/nvme0n1p3: UUID="dc571795-e622-4084-877a-5d6504822b65" TYPE="swap" PARTUUID="1c3fc0b4-5404-4c35-8b81-f18b1e8aa2f6"
+/dev/sda1: UUID="a7f2e118-c81b-4310-b692-f8e6123f63fc" TYPE="ext4" PARTUUID="b3409627-b054-0142-bc87-f56fca923550"
+/dev/sda2: UUID="7014acd9-3065-45d2-99e9-f4447ab05665" TYPE="ext4" PARTUUID="93f706e2-e761-034a-9e15-275bc6f02dcf"
+/dev/sda3: UUID="b31b8082-9e32-4b13-8833-5a81d2533512" TYPE="swap" PARTUUID="9aceef5a-a5df-184e-b742-b765388358c8"
+
+root@tiny:/var/log# fdisk -l
+Disk /dev/nvme0n1: 477 GiB, 512110190592 bytes, 1000215216 sectors
+Disk model: SAMSUNG MZVLB512HBJQ-000L7
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 53759901-E931-4844-8643-C7B579F584F0
+
+Device             Start        End   Sectors   Size Type
+/dev/nvme0n1p1      2048    1050623   1048576   512M EFI System
+/dev/nvme0n1p2   1050624  998215679 997165056 475.5G Linux filesystem
+/dev/nvme0n1p3 998215680 1000214527   1998848   976M Linux filesystem
+
+Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
+Disk model: WDC WD10SPZX-22Z
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 3596D09B-F661-5646-A37D-AA6F722F9453
+
+Device          Start        End    Sectors    Size Type
+/dev/sda1        2048 1949331455 1949329408  929.5G Linux filesystem
+/dev/sda2  1949331456 1951428607    2097152      1G Linux filesystem
+/dev/sda3  1951428608 1953525134    2096527 1023.7M Linux swap
