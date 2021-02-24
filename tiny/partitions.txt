@@ -1,3 +1,5 @@
+// don't make a var partition; it uses a lot of space, e.g., for apt
+
 root@tiny:/var/log# lsblk
 NAME        MAJ:MIN RM    SIZE RO TYPE MOUNTPOINT
 sda           8:0    0  931.5G  0 disk
