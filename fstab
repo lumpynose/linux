@@ -1,2 +1,0 @@
-# don't use this; router nas hangs after a while
-//router/T_Drive        /mnt/router     cifs    guest,user=nobody       0       3
