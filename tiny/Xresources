@@ -1,0 +1,25 @@
+! Xft.dpi: 222
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+URxvt.secondaryWheel: 1
+
+URxvt.background: black
+URxvt.foreground: white
+URxvt.fading: 50
+URxvt.cursorBlink: true
+URxvt.cursorColor: yellow
+URxvt.geometry: 80x44+0+0
+
+! URxvt.font: xft:consolas:size=14
+URxvt.font: xft:cascadia mono:size=14

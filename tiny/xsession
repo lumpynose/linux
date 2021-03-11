@@ -1,0 +1,19 @@
+# needed for the 10 inch monitor
+# xrandr --dpi 222
+# xrandr --dpi 222
+
+xset +fp /usr/local/share/fonts
+xset fp rehash
+
+xrdb -load .Xresources
+
+xset s on
+xset s blank
+xset s 300
+xset +dpms
+
+# xterm -tn xterm-color &
+
+urxvt &
+
+blackbox
