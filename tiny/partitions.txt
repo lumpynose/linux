@@ -1,7 +1,7 @@
 // don't make a var partition; it uses a lot of space, e.g., for apt
 
 // need to get rid of nvme0n1p3 (was swap) and merge it with nvme0n1p2
-// need to get rid of sda2 (was /var) and merge it with nvme0n1p2
+// need to get rid of sda2 (was /var) and merge it with sda3
 
 root@tiny:/# lsblk --fs
 NAME        FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
