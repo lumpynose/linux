@@ -1,0 +1,10 @@
+Copy ssh, wpa_supplicant.conf to boot partition.
+Add lines from config.txt to boot/config.txt
+
+The default user name is pi, with password raspberry.
+Remember the default keyboard layout is set to UK.
+
+Run raspi-config to set wifi, locale, etc.
+
+Use EN_US.UTF-8 for locale
+

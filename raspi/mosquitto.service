@@ -5,8 +5,6 @@ After=network.target
 Wants=network.target
 
 [Service]
-Type=notify
-NotifyAccess=main
 ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
