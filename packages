@@ -16,6 +16,7 @@ firmware-misc-nonfree
 firmware-realtek
 gcc-8
 git
+gnupg gnupg2 gnupg1
 gzip
 make
 maven
