@@ -6,7 +6,7 @@ apt-file
 apt-utils
 binutils
 bluetooth
-bluez					(installed by bluetooth?)
+bluez			(installed by bluetooth?)
 emacs-nox
 firmware-amd-graphics
 firmware-linux
@@ -18,6 +18,7 @@ gcc-8
 git
 gnupg gnupg2 gnupg1
 gzip
+iw 			(for wireless)
 make
 maven
 netselect-apt
@@ -28,14 +29,14 @@ pm-utils
 sudo
 unzip
 usbutils
-vlc					(installs a shitload of libs)
+vlc			(installs a shitload of libs)
 wget
 x11-xserver-utils
 xinit
-libswt-gtk-4-jni			(for eclipse)
+libswt-gtk-4-jni	(for eclipse)
 libreadline-dev
-libusb-1.0-0-dev			(not needed)
-libhidapi-dev				(not needed)
+libusb-1.0-0-dev	(not needed)
+libhidapi-dev		(not needed)
 ==========================================================================
 syncthing, from syncthing.net; see https://apt.syncthing.net/
 java, from oracle.com

@@ -9,11 +9,13 @@ xrdb -load .Xresources
 
 xset s on
 xset s blank
-xset s 300
+xset s 180
 xset +dpms
+xset dpms 240 300 300
 
-# xterm -tn xterm-color &
+
+xinput --set-prop 9 "libinput Accel Speed" -0.7
 
 urxvt &
 
-blackbox
+i3

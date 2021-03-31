@@ -1,0 +1,45 @@
+// what doesn't work:
+
+// /etc/wpa_supplicant/wpa_supplicant.conf
+// same as on raspberry pi os
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+        ssid="The Pulsating Inconvenience"
+        psk="????"
+}
+
+// /etc/network/interfaces try 1
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+
+// lines for remaining configs are only changes for
+// wlan0, eth0 and lo are unchanged.
+
+// /etc/network/interfaces try 2
+
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+    wpa-ssid "The Pulsating Inconvenience"
+    wpa-psk ????
+
+// the following this broke eth0 as well as not
+// fixing wlan0
+
+// /etc/network/interfaces try 3
+
+allow-hotplug wlan0
+iface wlan0 inet static
+    address 192.168.1.4/24
+    gateway 192.168.1.1
