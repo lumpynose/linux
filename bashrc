@@ -1,23 +1,22 @@
 set -o noclobber
-
 shopt -s failglob
 
 export PATH;		PATH=~/bin:\
-~/.local/bin:\
-/usr/bin:\
-/bin:\
-/usr/local/java/jdk-11.0.10/bin:\
-/usr/local/apache-maven-3.6.3/bin:\
-/usr/local/bin:\
+~/.local/bin/:\
+/usr/bin/:\
+/bin/:\
+/usr/local/java/jdk-11.0.10/bin/:\
+/usr/local/apache-maven-3.6.3/bin/:\
+/usr/local/bin/:\
 /usr/local/eclipse/\
 
-export PAGER;		PAGER="less --quit-if-one-screen --ignore-case --no-init"
-export JAVA_HOME;	JAVA_HOME=/usr/local/java/jdk-11.0.10
-export VISUAL;		VISUAL=emacs
-export SYSTEMD_PAGER;	SYSTEMD_PAGER=''
 export AMPY_PORT;	AMPY_PORT=/dev/ttyUSB0
-export ESPTOOL_PORT;    ESPTOOL_PORT=/dev/ttyUSB0
 export ESPTOOL_BAUD;    ESPTOOL_BAUD=921600
+export ESPTOOL_PORT;    ESPTOOL_PORT=/dev/ttyUSB0
+export JAVA_HOME;	JAVA_HOME=/usr/local/java/jdk-11.0.10
+export PAGER;		PAGER="less --quit-if-one-screen --ignore-case --no-init"
+export SYSTEMD_PAGER;	SYSTEMD_PAGER=''
+export VISUAL;		VISUAL=emacs
 
 alias blank='xset dpms force off'
 alias clean='find . -name "*~" -a -print -a -exec rm {} \;'
