@@ -5,16 +5,14 @@
 ::1     	localhost ip6-localhost ip6-loopback
 ff02::1		ip6-allnodes
 ff02::2		ip6-allrouters
-127.0.0.1	localhost
 
-192.168.1.2	tiny tiny-wired
+192.168.1.2	tiny-wired
 192.168.1.3	windows
-192.168.1.4	raspi raspi-wifi
+192.168.1.4	raspi raspi-pi4 raspi-wifi
 192.168.1.5	tiny tiny-wifi
 192.168.1.6	lenovo-m8
 192.168.1.10	ibm thinkpad
 192.168.1.11	surface-wifi
 192.168.1.13	surface-wired-mason
-192.168.1.14	raspberry-pi-wired
 192.168.1.15	hp-laptop-wifi
 192.168.1.18    surface-wired-amz
