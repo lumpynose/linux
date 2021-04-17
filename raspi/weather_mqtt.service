@@ -1,0 +1,14 @@
+[Unit]
+Description=Start the rtl_433 mqtt feeder
+After=network.target
+
+[Service]
+ExecStart=/usr/local/etc/weather_mqtt.py
+WorkingDirectory=/tmp
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=rusty
+
+[Install]
+WantedBy=multi-user.target
