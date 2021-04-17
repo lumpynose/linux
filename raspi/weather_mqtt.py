@@ -40,7 +40,7 @@ if __name__ == '__main__':
     passwd = get_passwd("/usr/local/etc/passwd")
 
     client = mqtt.Client()
-    client.username_pw_set("tiny", password=passwd)
+    client.username_pw_set("tiny", password = passwd)
     client.on_connect = on_connect
     client.on_message = on_message
 
