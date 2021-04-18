@@ -22,15 +22,10 @@ def on_connect(client, userdata, flags, rc):
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     # client.subscribe("#")
-    #client.subscribe("rtl_433/+/devices/#")
     client.subscribe("rtl_433/+/devices/Prologue-TH/+/+/102/temperature_F")
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    ## current_time = datetime.datetime.now().strftime("%H:%M:%S")
-    # temperature = float(msg.payload.decode('utf-8'))
-    # print("msg:", msg.payload.decode())
-    ## print("[{}] topic: {}, payload: {:.2f}".format(current_time, msg.topic, float(msg.payload.decode())))
     prom_gauge.set_to_current_time()
     prom_gauge.set(float(msg.payload.decode()))   # Set to a given value
 
