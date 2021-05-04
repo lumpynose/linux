@@ -1,5 +1,5 @@
 connect disk to windows or tiny
 boot drive is available;
 put on it the wpa_supplicant.conf file
-add an empty file named sss to the boot drive
+add an empty file named ssh to the boot drive
 update config.txt for 7" screen
