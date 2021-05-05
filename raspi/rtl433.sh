@@ -7,4 +7,4 @@ logger -i --tag rtl_433 "Starting rtl_433 to mqtt"
 /usr/local/bin/rtl_433 \
     -C customary \
     -F \
-    "mqtt://localhost:1883,user=raspi,pass=${passwd},devices=rtl_433[/model]"
+    "mqtt://localhost:1883,user=raspi,pass=${passwd},retain=1,devices=rtl_433[/model]"
