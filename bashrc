@@ -1,3 +1,11 @@
+force_color_prompt=yes
+
+if [ "$LOGNAME" = root ] || [ "`id -u`" -eq 0 ] ; then
+    PS1='\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;34m\]#\033[00m\] '
+else
+    PS1='\u@\h:\w\$ '
+fi
+
 set -o noclobber
 shopt -s failglob
 
@@ -9,6 +17,10 @@ export PATH;		PATH=~/bin:\
 /usr/local/apache-maven-3.6.3/bin/:\
 /usr/local/bin/:\
 /usr/local/eclipse/\
+
+if [ "$LOGNAME" = root ] || [ "`id -u`" -eq 0 ] ; then
+    export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+fi
 
 export AMPY_PORT;	AMPY_PORT=/dev/ttyUSB0
 export ESPTOOL_BAUD;    ESPTOOL_BAUD=921600
@@ -29,7 +41,7 @@ alias localx='export DISPLAY; DISPLAY=:0'
 alias ls='ls --classify --color=auto'
 alias mv='mv -i'
 alias noblank='xset s reset;xset s noblank;xset s off;xset dpms force on'
-alias pav='source ~/env/bin/activate'
+alias pav='source ~/.venv/bin/activate'
 alias python='python3'
 
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
