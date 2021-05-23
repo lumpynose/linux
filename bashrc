@@ -20,6 +20,7 @@ export PATH;		PATH=~/bin:\
 
 if [ "$LOGNAME" = root ] || [ "`id -u`" -eq 0 ] ; then
     export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    alias z=suspend
 fi
 
 export AMPY_PORT;	AMPY_PORT=/dev/ttyUSB0
