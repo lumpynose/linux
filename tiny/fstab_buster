@@ -1,25 +1,34 @@
 #
+# for bullseye:
+#
 # mkdir /home/var (if /home is a new fs) and bind mount /var under it;
 # don't make it a separate partition.
 #
 # make swap 10g
 #
-# sd1 gets 2 partitions; /home and swap
 # nvme0n1 gets 2 partitions; /boot and /
+# sd1 gets 2 partitions; /home and swap
+#
+# list uuids with blkid
 #
 
 # /boot/efi was on /dev/nvme0n1p1 during installation
+# /dev/nvme0n1p1
 UUID=6826-F23E  /boot/efi       vfat    umask=0077      0       1
 
 # / was on /dev/nvme0n1p2 during installation
+# /dev/nvme0n1p2
 UUID=cfd7205b-535e-4bc2-942a-3b95f3ede77d	/		ext4    errors=remount-ro	0 1
 
+# /dev/sda1
 UUID=a7f2e118-c81b-4310-b692-f8e6123f63fc	/home		ext4	defaults		0 2
 
 # made it too small
+# /dev/sda2
 # UUID=7014acd9-3065-45d2-99e9-f4447ab05665	/var		ext4	defaults		0 2
 
 # swap was on /dev/nvme0n1p3 during installation
+# /dev/sda3
 UUID=b31b8082-9e32-4b13-8833-5a81d2533512	none		swap	sw			0 0
 
 /home/var					/var		none	defaults,bind		0 2

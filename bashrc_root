@@ -1,6 +1,10 @@
 set -o noclobber
 shopt -s failglob
 
+if [ "$LOGNAME" = root ] || [ "`id -u`" -eq 0 ] ; then
+    export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+fi
+
 export PAGER;           PAGER="less --quit-if-one-screen --ignore-case --no-init"
 export SYSTEMD_PAGER;   SYSTEMD_PAGER=''
 export TERMINAL;        TERMINAL=urxvt

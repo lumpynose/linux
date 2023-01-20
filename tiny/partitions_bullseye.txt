@@ -1,0 +1,71 @@
+
+lsblk --fs
+
+NAME        FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                                
+├─sda1      ext4   1.0         06e33c84-af8f-4479-ab38-140fd71eb289  867.9G     0% /home
+└─sda2      swap   1           0b37ed7d-4797-4d32-928e-2963057cabca                [SWAP]
+sdb                                                                                
+└─sdb1      ext4   1.0         f82fd882-8526-4d6d-8955-927f206a4e23                
+nvme0n1                                                                            
+├─nvme0n1p1 vfat   FAT32       6826-F23E                             507.6M     1% /boot/efi
+└─nvme0n1p2 ext4   1.0         bc07fa15-2ca0-4a83-a583-a9ed171a00a9  442.9G     0% /
+
+lsblk
+
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda           8:0    0 931.5G  0 disk 
+├─sda1        8:1    0 930.6G  0 part /home
+└─sda2        8:2    0   953M  0 part [SWAP]
+sdb           8:16   0 465.8G  0 disk 
+└─sdb1        8:17   0 465.8G  0 part 
+nvme0n1     259:0    0 476.9G  0 disk 
+├─nvme0n1p1 259:1    0   512M  0 part /boot/efi
+└─nvme0n1p2 259:2    0 476.4G  0 part /
+
+blkid
+
+/dev/nvme0n1p1: UUID="6826-F23E" BLOCK_SIZE="512" TYPE="vfat" PARTUUID="01578927-299d-497c-8c43-18254abd758c"
+/dev/nvme0n1p2: UUID="bc07fa15-2ca0-4a83-a583-a9ed171a00a9" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="ecdaf37f-cfd6-45e0-89b9-8fadad04dffb"
+/dev/sda1: UUID="06e33c84-af8f-4479-ab38-140fd71eb289" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="a90788c7-782a-4448-b846-9e50171e8820"
+/dev/sda2: UUID="0b37ed7d-4797-4d32-928e-2963057cabca" TYPE="swap" PARTUUID="906765b9-4e61-4e9c-b536-3d8821152003"
+/dev/sdb1: UUID="f82fd882-8526-4d6d-8955-927f206a4e23" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="3117624f-7d4b-6f45-a202-9ebd9458a651"
+
+fdisk -l
+
+Disk /dev/nvme0n1: 476.94 GiB, 512110190592 bytes, 1000215216 sectors
+Disk model: SAMSUNG MZVLB512HBJQ-000L7              
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: D8232577-76C9-4DB5-A0F2-4444F9741FF5
+
+Device           Start        End   Sectors   Size Type
+/dev/nvme0n1p1    2048    1050623   1048576   512M EFI System
+/dev/nvme0n1p2 1050624 1000214527 999163904 476.4G Linux filesystem
+
+
+Disk /dev/sda: 931.51 GiB, 1000204886016 bytes, 1953525168 sectors
+Disk model: WDC WD10SPZX-22Z
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 18BDCC98-2A77-4491-8E2A-51B65FE8F684
+
+Device          Start        End    Sectors   Size Type
+/dev/sda1        2048 1951571967 1951569920 930.6G Linux filesystem
+/dev/sda2  1951571968 1953523711    1951744   953M Linux swap
+
+
+Disk /dev/sdb: 465.76 GiB, 500107862016 bytes, 976773168 sectors
+Disk model: Transcend       
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 595C36DC-41F2-8D4B-B4D5-699D5D58C321
+
+Device     Start       End   Sectors   Size Type
+/dev/sdb1   2048 976773134 976771087 465.8G Microsoft basic data

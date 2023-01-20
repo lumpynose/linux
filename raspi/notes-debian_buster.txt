@@ -6,11 +6,6 @@
 root.pub
 ???wpa_supplicant.conf
 
-// edit sysconf.txt and uncomment and fix,
-// value is contents of root.pub file (one long line).
-root_authorized_key=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUsi1GANiW3KG9yrKtL7Jh6GPbd/7/PpodpOKMY3a54bgxwPpISFYKmdmf7xhAPYcAemCobRHjq3mLMjM5e8xhYys/yO2Z5N9ihs04UdsMUT/MQqq7y2o8Ri22HF2V3255nz4xwVeaX9xGrCnPlYY69eCNmWi47/ciopIbvKycf+JqygBbf/FHVp4yCEQkiRJZlWtDIV2O33wsA5dhRNfrMQZnHoYiYYCvy+FwO8Pp8HWBuE55SkyHQpQ++Ej6ssYC9lhhP9zv9ROLkxtmpYDbEKAtfpz/jz20dNTBHWLvPe4D8rGF5pmVFkKOHJZcROMdjaxq4qdAAF8b2sm6ZFcz rusty@tiny
-
-
 // add lines to config.txt:
 hdmi_cvt=1024 600 60 3 0 0 0
 hdmi_group=2
@@ -19,12 +14,17 @@ hdmi_drive=2
 
 //////////////////////////////////////////////////////////////////
 
-# useradd -m -G sudo -s /bin/bash rusty
+# raspi-config
+
+# apt-get update
+# apt-get upgrade
 
 # timedatectl set-timezone America/Los_Angeles
 
-// alternatively
-# adduser --shell /bin/bash --add_extra_groups sudo rusty
+# useradd -m -G sudo -s /bin/bash rusty
+# passwd rusty
 
-# apt-get install apt-file apt-utils binutils bluetooth emacs-nox gcc git gzip make unzip usbutils wget xinit x11-xserver-utils man
-
+# apt-get install -y apt-file apt-utils binutils bluetooth emacs-nox gcc git gzip make unzip wget \
+    bluez bluez-tools python3-pip python3-venv usbutils nmon man \
+    xinit x11-xserver-utils
+# apt-file update

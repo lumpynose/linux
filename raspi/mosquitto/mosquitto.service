@@ -1,8 +1,14 @@
+# cp -v mosquitto.service /etc/systemd/system/
+# systemctl daemon-reload
+# systemctl start mosquitto.service
+# systemctl stop mosquitto.service
+# systemctl enable mosquitto.service
+
 [Unit]
 Description=Mosquitto MQTT Broker
 Documentation=man:mosquitto.conf(5) man:mosquitto(8)
-After=network.target
-Wants=network.target
+After=network.target network-online.target
+Wants=network.target network-online.target
 
 [Service]
 Type=notify

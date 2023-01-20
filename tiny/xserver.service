@@ -4,6 +4,12 @@
 # documentation > linux > usage > systemd
 # on the raspberry pi site.
 
+# cp myscript.service /etc/systemd/system/myscript.service
+# systemctl daemon-reload
+# systemctl start myscript.service
+# systemctl stop myscript.service
+# systemctl enable myscript.service
+
 [Unit]
 Description=Start the x server
 After=network.target
