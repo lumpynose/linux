@@ -1,0 +1,6 @@
+% sudo su - postgres
+% psql postgres postgreS
+postgres=# ALTER USER postgres PASSWORD 'the usual';
+
+Thereafter can connect with
+psql --username=postgres --password --host=localhost

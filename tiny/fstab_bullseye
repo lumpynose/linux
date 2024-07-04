@@ -10,7 +10,7 @@
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 
 # / was on /dev/nvme0n1p2 during installation
-UUID=bc07fa15-2ca0-4a83-a583-a9ed171a00a9	/		ext4	errors=remount-ro	0 1
+UUID=bc07fa15-2ca0-4a83-a583-a9ed171a00a9	/		ext4	noatime,errors=remount-ro	0 1
 
 # /boot/efi was on /dev/nvme0n1p1 during installation
 UUID=6826-F23E					/boot/efi	vfat	umask=0077		0 1

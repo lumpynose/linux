@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus exporter for metrics sent via MQTT topics
+Documentation=https://github.com/hikhvar/mqtt2prometheus
+
+[Service]
+Restart=always
+User=prometheus
+EnvironmentFile=/etc/default/prometheus-mqtt-exporter
+ExecStart=/usr/bin/prometheus-mqtt-exporter -listen-port 9661 -config /etc/prometheus/mqtt-exporter-zigbee.yaml $ARGS
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

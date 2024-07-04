@@ -1,0 +1,14 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug wlp0s20f3
+iface wlp0s20f3 inet dhcp
+        wpa-ssid The Pulsating Inconvenience
+        wpa-psk  secret

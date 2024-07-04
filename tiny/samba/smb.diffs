@@ -1,0 +1,14 @@
+29a30
+> 
+141c142
+< ; add user script = /usr/sbin/adduser --quiet --disabled-password --gecos "" %u
+---
+> ; add user script = /usr/sbin/useradd --create-home %u
+188a190
+> #   create mask = 0700
+192a195
+> #   directory mask = 0700
+226c229
+<    path = /var/spool/samba
+---
+>    path = /var/tmp

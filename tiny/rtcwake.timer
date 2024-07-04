@@ -1,0 +1,18 @@
+# Timer to run rtcwake.service
+#
+# cp rtcwake.timer /etc/systemd/system
+# cp rtcwake.service /etc/systemd/system
+# systemd-analyze verify /etc/systemd/system/rtcwake.*
+# systemctl daemon-reload
+# systemctl enable rtcwake.timer
+# systemctl start rtcwake.timer
+# systemctl list-timers
+
+[Unit]
+Description=Timer to run rtcwake.service after midnight
+
+[Timer]
+OnCalendar=*-*-* 01:00:00
+
+[Install]
+WantedBy=multi-user.target

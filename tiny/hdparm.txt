@@ -1,0 +1,7 @@
+apt-get install -y hdparm
+
+# lowercase -s; enables spinning down
+hdparm --yes-i-know-what-i-am-doing -s 1 /dev/sda
+
+# uppercase S; sets spin down to 10 minutes; (60*10/)5 (/5 is hdparm thing).
+hdparm -S 120 /dev/sda

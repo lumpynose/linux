@@ -1,0 +1,52 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+
+# /boot/efi was on /dev/nvme0n1p1 during installation
+UUID=508A-27A2 /boot/efi vfat noatime,umask=0077 0 1
+
+# / was on /dev/nvme0n1p2 during installation
+UUID=54742fc7-c156-494a-b0d7-4a31877ea9e8 / ext4 noatime,errors=remount-ro 0       1
+
+# backup swap in case hard drive dies
+# swap was on /dev/nvme0n1p3 during installation
+# UUID=02f3a312-e443-432e-b934-b26844763c7c none swap sw 0 0
+
+# swap on hard drive, not ssd
+# /dev/sda1
+# UUID=0b37ed7d-4797-4d32-928e-2963057cabca none swap sw 0 0
+
+# /dev/sda2
+# UUID=06e33c84-af8f-4479-ab38-140fd71eb289 /home ext4 defaults 0 2
+
+# swap on hard drive, not ssd
+# /dev/sdb1
+UUID=20397fa5-c5a5-4580-904f-ce8876502162 none swap sw 0 0
+
+# /dev/sdb2
+UUID=313167e7-834b-423d-a7b6-55ee66af8f5e /home ext4 defaults 0 2
+
+# /dev/nvme0n1p1
+UUID=7e846fde-3d54-409d-bd90-6d6914b7e83c /mnt/nvme0n1p1 ext4 defaults,noatime 0 2
+
+UUID=f4ba61fd-b44b-4334-9bd4-2b82644f4274 /transcend auto defaults,noatime,nofail 0 2
+
+/home/var /var none defaults,bind 0 2
+
+# /home/tmp /tmp none defaults,bind 0 2
+tmpfs /tmp tmpfs defaults,nosuid 0 0
+
+# /dev/nvme0n1p1: UUID="7e846fde-3d54-409d-bd90-6d6914b7e83c" TYPE="ext4" PARTUUID="0bdc6ae7-a813-6948-87fa-925b250708e5"
+# /dev/sdb1: UUID="f4ba61fd-b44b-4334-9bd4-2b82644f4274" TYPE="ext4" PARTUUID="3117624f-7d4b-6f45-a202-9ebd9458a651"
+# /dev/nvme1n1p2: UUID="54742fc7-c156-494a-b0d7-4a31877ea9e8" TYPE="ext4" PARTUUID="146a8520-cf0f-4c81-a474-8cae0806ecae"
+# /dev/nvme1n1p3: UUID="02f3a312-e443-432e-b934-b26844763c7c" TYPE="swap" PARTUUID="3a963c95-456c-4728-b119-ad3c1ad1954e"
+# /dev/nvme1n1p1: UUID="508A-27A2" TYPE="vfat" PARTUUID="4e5ea6ad-1973-4568-8080-f7b8c7fcafb2"
+# /dev/sda2: UUID="0b37ed7d-4797-4d32-928e-2963057cabca" TYPE="swap" PARTUUID="906765b9-4e61-4e9c-b536-3d8821152003"
+# /dev/sda1: UUID="06e33c84-af8f-4479-ab38-140fd71eb289" TYPE="ext4" PARTUUID="a90788c7-782a-4448-b846-9e50171e8820"

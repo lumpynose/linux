@@ -1,0 +1,7 @@
+libsensors-config
+linux-image-6.1.0-9-amd64
+postgresql-15
+postgresql-client-common
+postgresql-common
+ssl-cert
+sysstat

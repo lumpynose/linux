@@ -1,0 +1,11 @@
+    apt install package
+
+to install a package and its dependencies.
+
+    apt purge package
+
+to uninstall a package and its configuration files.
+
+    apt autopurge
+
+to uninstall the unnecesary dependencies installed with 'apt insttall' and its configuration files.

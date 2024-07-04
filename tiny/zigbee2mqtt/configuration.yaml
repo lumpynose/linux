@@ -1,0 +1,62 @@
+homeassistant: false
+permit_join: false
+frontend: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://localhost
+  version: 5
+serial:
+  port: /dev/ttyUSB0
+devices:
+  '0x00124b0024cc450f':
+    friendly_name: temperature/sonoff
+    homeassistant: {}
+    availability: true
+    optimistic: true
+    retain: true
+    retention: 300
+    qos: 2
+  '0x00158d0007f0446a':
+    friendly_name: temperature/aqara
+    homeassistant: {}
+    availability: true
+    optimistic: true
+    retain: true
+    retention: 300
+    qos: 2
+  '0x54ef4410002a5a94':
+    friendly_name: temperature/aqara_tvoc
+    homeassistant: {}
+    availability: true
+    optimistic: true
+    retain: true
+    retention: 300
+    qos: 2
+  '0x282c02bfffe398ef':
+    friendly_name: temperature/third_reality
+    homeassistant: {}
+    availability: true
+    optimistic: true
+    retain: true
+    retention: 300
+    qos: 2
+  '0x30fb10fffe74de9c':
+    friendly_name: temperature/sonoff_display
+    homeassistant: {}
+    availability: true
+    optimistic: true
+    retain: true
+    retention: 300
+    qos: 2
+  '0x001788010645fdcc':
+    friendly_name: temperature/outside_hue
+    homeassistant: {}
+    availability: true
+    optimistic: true
+    qos: 2
+    retain: true
+    retention: 300
+  '0xa4c1380b35f1cb04':
+    friendly_name: '0xa4c1380b35f1cb04'
+advanced:
+  log_level: info

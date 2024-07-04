@@ -1,0 +1,32 @@
+homeassistant: false
+permit_join: true
+frontend: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://localhost
+serial:
+  port: /dev/ttyUSB0
+devices:
+  '0x001788010645fdcc':
+    friendly_name: temperature/hue_outdoor
+    retain: true
+    disabled: false
+  '0x54ef4410002a5a94':
+    friendly_name: temperature/aqara_tvoc
+    retain: true
+    disabled: false
+  '0x00158d0007f0446a':
+    friendly_name: temperature/aqara
+    retain: true
+    disabled: false
+  '0x00124b0024cc450f':
+    friendly_name: temperature/sonoff
+    retain: true
+    disabled: false
+blocklist: []
+advanced:
+  homeassistant_legacy_entity_attributes: false
+  legacy_api: false
+  legacy_availability_payload: false
+device_options:
+  legacy: false

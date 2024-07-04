@@ -1,0 +1,22 @@
+# service for suspending the system
+#
+# cp rtcwake.timer /etc/systemd/system
+# cp rtcwake.service /etc/systemd/system
+# systemd-analyze verify /etc/systemd/system/rtcwake.*
+# systemctl daemon-reload
+# systemctl enable rtcwake.timer
+# systemctl start rtcwake.timer
+# systemctl list-timers
+
+[Unit]
+Description=Sets a wakeup timer
+
+# Took out the wakeup at 0800 since I can wake it
+# up by pressing its power button and will wake it
+# up if/when I need to use it.
+# ExecStart=/sbin/rtcwake -m mem --date 08:00
+
+[Service]
+Type=oneshot
+# ExecStart=/sbin/rtcwake -m mem
+ExecStart=/usr/bin/systemctl suspend

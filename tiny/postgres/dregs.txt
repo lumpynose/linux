@@ -1,0 +1,5 @@
+remove dregs and residual with
+
+    apt-get purge --purge $(cat ...)
+
+possibly more than once if they're done in the "wrong" order.

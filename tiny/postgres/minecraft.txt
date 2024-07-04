@@ -1,0 +1,13 @@
+# follow instructions in passwd.txt to set the postgres user
+# database password.
+
+% psql --username=postgres --password --host=localhost
+postgres=# create user minecraft
+postgres=# alter user minecraft password 'minecraft';
+postgres=# alter user minecraft login;
+postgres=# alter user minecraft createdb;
+\q
+% psql --username=minecraft --password --host=localhost
+% psql minecraft
+postgres=# create database minecraft with owner = minecraft;
+postgres=# create schema sethomes;

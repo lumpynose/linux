@@ -1,0 +1,21 @@
+# cp -v rtl433.sh* /usr/local/etc
+# cp -v rtl433.service /etc/systemd/system/
+# systemctl daemon-reload
+# systemctl enable rtl433.service
+# systemctl start rtl433.service
+# systemctl status rtl433.service
+
+[Unit]
+Description=Start the rtl_433 process
+After=network.target
+
+[Service]
+ExecStart=/usr/local/etc/rtl433.sh
+WorkingDirectory=/tmp
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

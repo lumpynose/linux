@@ -1,0 +1,21 @@
+# cp tomcat.service /etc/systemd/system/
+# systemctl daemon-reload
+# systemctl start tomcat.service
+# systemctl stop tomcat.service
+# systemctl enable tomcat.service
+
+[Unit]
+Description=Start the tomcat process
+After=network.target
+
+[Service]
+#ExecStart=/usr/local/apache-tomcat-10.1.7/bin/daemon.sh --tomcat-user tomcat --catalina-home /usr/local/apache-tomcat-10.1.7 start
+ExecStart=/usr/local/apache-tomcat-10.1.7/bin/catalina.sh start
+WorkingDirectory=/tmp
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=tomcat
+
+[Install]
+WantedBy=multi-user.target
