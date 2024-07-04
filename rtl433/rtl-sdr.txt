@@ -1,2 +1,0 @@
-rtl-433
-rtl-sdr
